@@ -13,4 +13,4 @@ script:
   - touch ./src/bin/main.rs && touch ./src/lib.rs && touch create_cred_config/mod.rs && touch read_csv/mod.rs && touch write_config/mod.rs && cargo clippy -- -D warnings
   - cargo check
   - cargo build --verbose --all
-  - cargo test --verbose --all
+
