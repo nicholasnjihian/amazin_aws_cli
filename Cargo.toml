@@ -1,0 +1,13 @@
+[package]
+name = "aws_cli_challenge"
+version = "0.1.0"
+authors = ["Nicholas Njihia <njihianicklas55@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.14"
+colored="1.9.3"
+rusoto_core = "0.44.0"
+csv="1.1"
