@@ -30,7 +30,7 @@ pub fn edit_config_from_stdin(
                                //flush the terminal by println!()
     let handle = stdout.lock(); //acquire a lock on stdout
     let mut buffer = io::BufWriter::new(handle);
-    writeln!(buffer, "{:?}", data.to_owned())?; //write to stdout
+    writeln!(buffer, "{:?}", data.clone())?; //write to stdout
     buffer.flush()?;
 
     {
@@ -40,7 +40,11 @@ pub fn edit_config_from_stdin(
         let mut handle = stdin.lock();
         let mut buf = String::new();
         handle.read_to_string(&mut buf)?;
+        buffer_file
+            .get_mut()
+            .write(&data.to_owned().into_bytes()[..])?;
         buffer_file.get_mut().write(&buf.into_bytes()[..])?;
+        buffer_file.get_mut().write(b"\n")?;
     } //end scope
 
     Ok(())

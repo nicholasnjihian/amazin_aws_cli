@@ -9,5 +9,14 @@ edition = "2018"
 [dependencies]
 structopt = "0.3.14"
 colored="1.9.3"
-rusoto_core = "0.44.0"
+
 csv="1.1"
+
+#rusoto aws services
+rusoto_core = "0.44.0"
+rusoto_s3 = "0.44.0"
+rusoto_rds = "0.44.0"
+rusoto_ecs = "0.44.0"
+rusoto_ec2 = "0.44.0"
+rusoto_ecr = "0.44.0"
+rusoto_iam = "0.44.0"

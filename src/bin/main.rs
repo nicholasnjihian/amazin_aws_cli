@@ -64,7 +64,11 @@ fn verify_config() -> Result<(), Box<dyn Error>> {
                     Ok(w) => w,
                     Err(err) => panic!("Problem creating config file ==> Err: {}", err),
                 };
-                let required = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_REGION"];
+                let required = [
+                    "AWS_ACCESS_KEY_IDi = ",
+                    "AWS_SECRET_ACCESS_KEY = ",
+                    "AWS_REGION = ",
+                ];
                 for item in &required {
                     let _ = write_config::edit_config_from_stdin(item, &mut writer)
                         .expect("Error editing credentials file for item ");
