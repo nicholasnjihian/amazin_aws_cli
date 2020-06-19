@@ -43,18 +43,34 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let _ = verify_config().unwrap();
             }
         },
+        //Now if the user of the application types something like
+        //'app ls s3' or 'app ls ec2' this application will look for a match here:
         Awscli::List(l) => {
+            //Firstly we need the location for the credentials 
+            //to have access-key and secret access-key and
+            //we need reg(region) parsed from this file
+            //as our credentials provider in the (rusoto_credential)API needs this information.
             let config_location = create_cred_config::return_config_location()?;
-            let reg = rusoto_aws_integration::get_region::get_aws_region(config_location.clone());
+            let reg = rusoto_aws_integration::get_region::get_aws_region(config_location
+                                                                         .clone());
+            //Now finally lets pattern match to the resource(s3,ec2,..etc) we want to query:
             match &l.resource {
                 Resource::S3 => {
-                    rusoto_aws_integration::list_s3_bucket(config_location, reg).await?
+                    rusoto_aws_integration::list_s3_bucket(config_location, reg).await?;
                 }
                 Resource::EC2 => rusoto_aws_integration::describe_ec2(config_location, reg).await,
                 Resource::ECS => {
-                    rusoto_aws_integration::list_ecs_container_clusters(config_location, reg).await
+                    rusoto_aws_integration::list_ecs_container_clusters(config_location, reg).await;
                 }
-                _ => {}
+                Resource::ECR => {
+                    rusoto_aws_integration::describe_ecr(config_location,reg).await;
+                }
+                Resource::IAM => {
+                    rusoto_aws_integration::describe_iam(config_location, reg).await;
+                }
+                Resource::RDS => {
+                    rusoto_aws_integration::describe_rds(config_location,reg).await;
+                }
             }
         }
     }
