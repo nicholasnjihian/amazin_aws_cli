@@ -10,7 +10,7 @@ matrix:
   - rust: nightly
 script:
   - cargo fmt -- --check
-  - touch ./src/bin/main.rs && touch ./src/lib.rs && touch create_cred_config/mod.rs && touch read_csv/mod.rs && touch write_config/mod.rs && cargo clippy -- -D warnings
+  - touch ./src/bin/main.rs && touch ./src/lib.rs && touch ./src/create_cred_config/mod.rs && touch ./src/read_csv/mod.rs && touch ./src/write_config/mod.rs && cargo clippy -- -D warnings
   - cargo check
   - cargo build --verbose --all
 
