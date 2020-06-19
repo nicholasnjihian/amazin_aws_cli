@@ -17,7 +17,7 @@ In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, 
 
 
 ***To start working with this app:***
-## INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
+INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
 
 **(i): Git clone the repo:**
 ---
