@@ -10,17 +10,17 @@ This repository is a command line application written in Rust that allows a comp
 2. *EC2* - Elastic Compute Cloud
 3. *ECS* - Elastic Container Service
 4. *ECR* - Elastic Container Registry
-5. RDS - Relational Database Service
+5. *RDS* - Relational Database Service
 
 The app uses the AWS SDK rusoto, which is based on a much lower level python AWS SDK called botocore (from which the popular python AWS SDK boto3 is based). This is possible because Rust can interface with python with various libraries like pyo3.
 In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, as has been observed by the rusoto developers:https://matthewkmayer.github.io/blag/public/post/farewell-rusoto/.
 
 
-***To start working with this app:***
-INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
+To start working with this app:
+### INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
 
 (i): Git clone the repo:
----
+
 $git clone https://github.com/nicholasnjihian/amazin_aws_cli.git
 
 (ii): Then cd into the cloned folder on your machine.
