@@ -22,7 +22,7 @@ pub fn create_config_file() -> Result<BufWriter<File>, Box<dyn Error>> {
     write!(cred_path, "{}/.aws_cli", home)?;
     println!("path we will store credentials{:?}", cred_path);
     let basepath = Path::new(&cred_path);
-    if basepath.exists() == false {
+    if !basepath.exists() {
         //Does ~/.aws_cli already exist? If not:
         fs::create_dir(basepath)?;
     }

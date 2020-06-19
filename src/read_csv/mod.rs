@@ -11,7 +11,7 @@ type Record = HashMap<String, String>;
 ///helper function to read csv credentials file
 ///and extract "Access Key" and "Secret access key"
 ///to avoid having it printed to stdin
-pub fn read_csv<'a, R>(f: R) -> Result<Vec<String>, Box<dyn Error>>
+pub fn read_csv<R>(f: R) -> Result<Vec<String>, Box<dyn Error>>
 where
     R: BufRead,
 {

@@ -65,7 +65,7 @@ where
 
     match ecs.list_clusters(ListClustersRequest::default()).await {
         Ok(clusters) => {
-            for arn in clusters.cluster_arns.unwrap_or(vec![]) {
+            for arn in clusters.cluster_arns.unwrap_or_default() {
                 println!("ecs arn -> {:?}", arn);
             }
         }
@@ -89,7 +89,7 @@ where
     let req = DescribeInstancesRequest::default();
     match ec2.describe_instances(req).await {
         Ok(instances) => {
-            for ec2_instance in instances.reservations.unwrap_or(vec![]) {
+            for ec2_instance in instances.reservations.unwrap_or_default() {
                 println!("Instance in EC2 -> {:?}", ec2_instance);
             }
         }
@@ -113,7 +113,7 @@ where
     let req = DescribeRepositoriesRequest::default();
     match ecr_client.describe_repositories(req).await {
         Ok(response) => {
-            for repo in response.repositories.unwrap_or(vec![]) {
+            for repo in response.repositories.unwrap_or_default() {
                 println!("ECR repository == {:?}", repo);
             }
         }
@@ -162,7 +162,7 @@ where
 
     match rds_client.describe_db_clusters(request).await {
         Ok(response) => {
-            for db in response.db_clusters.unwrap_or(vec![]) {
+            for db in response.db_clusters.unwrap_or_default() {
                 println!("RDS db == {:?}", db);
             }
         }

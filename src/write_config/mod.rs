@@ -4,17 +4,17 @@ use std::io::{self, BufWriter, Read, Write};
 
 ///Now to write the credentials to our config file
 pub fn edit_config_from_csv(
-    config: &Vec<String>,
+    config: &[String],
     buffer: &mut BufWriter<File>,
 ) -> Result<(), Box<dyn Error>> {
     let acc_key_bytes = &config[0].clone().into_bytes();
     let secr_key_bytes = &config[1].clone().into_bytes();
-    buffer.get_mut().write(b"aws_access_key_id=")?;
-    buffer.get_mut().write(acc_key_bytes)?;
-    buffer.get_mut().write(b"\n")?;
-    buffer.get_mut().write(b"aws_secret_access_key=")?;
-    buffer.get_mut().write(secr_key_bytes)?;
-    buffer.get_mut().write(b"\n")?;
+    buffer.get_mut().write_all(b"aws_access_key_id=")?;
+    buffer.get_mut().write_all(acc_key_bytes)?;
+    buffer.get_mut().write_all(b"\n")?;
+    buffer.get_mut().write_all(b"aws_secret_access_key=")?;
+    buffer.get_mut().write_all(secr_key_bytes)?;
+    buffer.get_mut().write_all(b"\n")?;
     Ok(())
 }
 
@@ -29,7 +29,7 @@ pub fn edit_config_from_stdin(
                                //flush the terminal by println!()
     let handle = stdout.lock(); //acquire a lock on stdout
     let mut buffer = io::BufWriter::new(handle);
-    writeln!(buffer, "{:?}", data.clone())?; //write to stdout
+    writeln!(buffer, "{:?}", data)?; //write to stdout
     buffer.flush()?;
 
     {
@@ -41,9 +41,9 @@ pub fn edit_config_from_stdin(
         handle.read_to_string(&mut buf)?;
         buffer_file
             .get_mut()
-            .write(&data.to_owned().into_bytes()[..])?;
-        buffer_file.get_mut().write(&buf.into_bytes()[..])?;
-        buffer_file.get_mut().write(b"\n")?;
+            .write_all(&data.to_owned().into_bytes()[..])?;
+        buffer_file.get_mut().write_all(&buf.into_bytes()[..])?;
+        buffer_file.get_mut().write_all(b"\n")?;
     } //end scope
 
     Ok(())
