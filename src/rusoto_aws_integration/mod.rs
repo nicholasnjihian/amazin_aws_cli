@@ -18,9 +18,9 @@ use rusoto_s3::{S3Client, S3};
 //ECR
 use rusoto_ecr::{DescribeRepositoriesRequest, Ecr, EcrClient};
 //IAM
-use rusoto_iam::{ListUsersRequest, Iam, IamClient};
+use rusoto_iam::{Iam, IamClient, ListUsersRequest};
 //RDS
-use rusoto_rds::{Rds,RdsClient,DescribeDBClustersMessage};
+use rusoto_rds::{DescribeDBClustersMessage, Rds, RdsClient};
 
 //Imports from the standard library
 use std::error::Error;
@@ -100,8 +100,9 @@ where
 }
 
 ///Describe the RDS provisioned in your cloud
-pub async fn describe_ecr<P>(cred_file_path: P, reg: Region) 
-where P: Into<PathBuf>
+pub async fn describe_ecr<P>(cred_file_path: P, reg: Region)
+where
+    P: Into<PathBuf>,
 {
     let cred_provider = ProfileProvider::with_default_configuration(cred_file_path);
     let mut http_config_with_bigger_buffer = HttpConfig::new();
@@ -112,20 +113,19 @@ where P: Into<PathBuf>
     let req = DescribeRepositoriesRequest::default();
     match ecr_client.describe_repositories(req).await {
         Ok(response) => {
-            for repo in response.repositories.unwrap_or(vec![]){
+            for repo in response.repositories.unwrap_or(vec![]) {
                 println!("ECR repository == {:?}", repo);
             }
-        },
+        }
         Err(error) => panic!("Error Listing ECR repos : {:#?}", error),
-
     }
-
 }
 
 ///The function "describe_iam" describes the
 ///Identity and Access Management profiles, users and groups set up.
-pub async fn describe_iam<P>(cred_file_path: P, reg: Region) 
-where P : Into<PathBuf>
+pub async fn describe_iam<P>(cred_file_path: P, reg: Region)
+where
+    P: Into<PathBuf>,
 {
     let cred_provider = ProfileProvider::with_default_configuration(cred_file_path);
     let mut http_config_with_bigger_buffer = HttpConfig::new();
@@ -138,19 +138,18 @@ where P : Into<PathBuf>
     };
     match iam.list_users(request).await {
         Ok(response) => {
-            for user in response.users{
+            for user in response.users {
                 println!("IAM User == {:?}", user);
             }
-        },
+        }
         Err(error) => panic!("Error Listing IAM users info : {:#?}", error),
-
     }
-
 }
 
 ///The function "describe_ecr" will describe the ECR set up.
-pub async fn describe_rds<P>(cred_file_path: P, reg: Region) 
-where P: Into<PathBuf>
+pub async fn describe_rds<P>(cred_file_path: P, reg: Region)
+where
+    P: Into<PathBuf>,
 {
     let cred_provider = ProfileProvider::with_default_configuration(cred_file_path);
     let mut http_config_with_bigger_buffer = HttpConfig::new();
@@ -160,15 +159,13 @@ where P: Into<PathBuf>
     let rds_client = RdsClient::new_with(http_provider, cred_provider, reg);
 
     let request = DescribeDBClustersMessage::default();
-    
+
     match rds_client.describe_db_clusters(request).await {
         Ok(response) => {
-            for db in response.db_clusters.unwrap_or(vec![]){
+            for db in response.db_clusters.unwrap_or(vec![]) {
                 println!("RDS db == {:?}", db);
             }
-        },
+        }
         Err(error) => panic!("Error Listing ECR repos : {:#?}", error),
-
     }
-
 }
