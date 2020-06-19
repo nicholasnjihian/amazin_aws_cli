@@ -20,6 +20,7 @@ In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, 
 ## INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
 
 **(i): Git clone the repo:**
+---
 $git clone https://github.com/nicholasnjihian/amazin_aws_cli.git
 
 **(ii): Then cd into the cloned folder on your machine.**
@@ -27,31 +28,43 @@ $git clone https://github.com/nicholasnjihian/amazin_aws_cli.git
 Find a startup.sh which will help in quickly installing dependencies, building and running the application.This bash script will check whether you have cargo and rustup installed and install them for you if you do not. It will then display the versions of these 2 software packages and then build and run the crate/project/application.
 
 You can execute it by running:
+---
 ./startup.sh
 
 It will show the necessary help, arguments and subcommands available.
 Hence you can run with commands like:
-*$./startup.sh --help*
-*$./startup.sh configure*
-*$./startup.sh configure -f <enter credentials file>*
-*$./startup.sh list s3*
-*$./startup.sh ls s3*
-*$/.startup.sh ls ec2*
+$./startup.sh --help
+---
+$./startup.sh configure
+---
+$./startup.sh configure -f <enter credentials file>
+---
+$./startup.sh list s3
+---
+$./startup.sh ls s3
+---
+$/.startup.sh ls ec2
 ---
 ## Optional.
 Optionally if you don't want to use the script above (if you're wary of internet-sourced scripts) you can just build the crate manually as follows(which is also what the script does).
 
 **(i): To build the crate:(ensure you are in the same directory as the src directory):**
-*$cargo build --release*
+---
+$cargo build --release
 
-**(ii): To run:(ensure you are in the same directory as the src directory): **
+**(ii): To run:(ensure you are in the same directory as the src directory):**
 *$cargo run <options/subcommand/arguments>*
-
+---
 $ cargo run configure -f <enter credentials file>
+---
 $ cargo configure
+---
 $ cargo ls s3
+---
 $ cargo list s3
+---
 $ cargo ls ec2
+---
 $ cargo list ecs
 
 ### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory):
