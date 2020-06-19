@@ -13,8 +13,7 @@ This repository is a command line application written in Rust that allows a comp
 5. *RDS* - Relational Database Service
 
 The app uses the AWS SDK rusoto, which is based on a much lower level python AWS SDK called botocore (from which the popular python AWS SDK boto3 is based). This is possible because Rust can interface with python with various libraries like pyo3.
-In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, as has been observed by the rusoto developers:https://matthewkmayer.github.io/blag/public/post/farewell-rusoto/.
-
+In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, as has been observed by the rusoto developers:  https://matthewkmayer.github.io/blag/public/post/surviving-the-winter/
 
 To start working with this app:
 ### INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
