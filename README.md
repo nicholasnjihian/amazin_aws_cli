@@ -69,7 +69,7 @@ $ cargo run ls ec2
 ---
 $ cargo run list ecs
 
-### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory):
+### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory).This command displays the offline documentation for the crate and all its dependencies to be viewed on a web browser:
 
 $ cargo docs --open
 
@@ -82,12 +82,13 @@ However, the bash script above installs this for you if you don't have it instal
 
 
 **Also the rusoto crate(crate is the name for Rust packages) requires that OpenSSL be installed for Linux. This can be done via :**
-
+---
 $ sudo apt install openssl (for Debian/Ubuntu)
+---
 $ sudo pacman -S openssl (for Arch Linux)
+---
 For Centos and Red-Hat based distros,look up official documentation online since the process includes downloading a tar file and running make on it.
 
-**and so on depending on your distribution.**
 
 
 
