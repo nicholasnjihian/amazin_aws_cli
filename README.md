@@ -19,11 +19,11 @@ In 2020, AWS has been hiring Rust engineers to work on a pure rust SDK however, 
 ***To start working with this app:***
 INSTRUCTIONS FOR SETTING UP ON LOCAL MACHINE.
 
-**(i): Git clone the repo:**
+(i): Git clone the repo:
 ---
 $git clone https://github.com/nicholasnjihian/amazin_aws_cli.git
 
-**(ii): Then cd into the cloned folder on your machine.**
+(ii): Then cd into the cloned folder on your machine.
 
 Find a startup.sh which will help in quickly installing dependencies, building and running the application.This bash script will check whether you have cargo and rustup installed and install them for you if you do not. It will then display the versions of these 2 software packages and then build and run the crate/project/application.
 
