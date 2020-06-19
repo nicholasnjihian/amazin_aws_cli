@@ -1,5 +1,5 @@
 //Our Imports
-use colored::*;
+//use colored::*;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
@@ -8,7 +8,8 @@ use structopt::StructOpt;
 
 use aws_cli_challenge::*;
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
     let options = Awscli::from_args();
     println!("{:?}", options);
 
@@ -43,9 +44,21 @@ fn main() {
             }
         },
         Awscli::List(l) => {
-            unimplemented!();
+            let config_location = create_cred_config::return_config_location()?;
+            let reg = rusoto_aws_integration::get_region::get_aws_region(config_location.clone());
+            match &l.resource {
+                Resource::S3 => {
+                    rusoto_aws_integration::list_s3_bucket(config_location, reg).await?
+                }
+                Resource::EC2 => rusoto_aws_integration::describe_ec2(config_location, reg).await,
+                Resource::ECS => {
+                    rusoto_aws_integration::list_ecs_container_clusters(config_location, reg).await
+                }
+                _ => {}
+            }
         }
     }
+    Ok(())
 }
 
 fn verify_config() -> Result<(), Box<dyn Error>> {
@@ -55,20 +68,16 @@ fn verify_config() -> Result<(), Box<dyn Error>> {
         let buffer = BufReader::new(f);
         for line_result in buffer.lines() {
             let line = line_result?;
-            if !line.contains("AWS_ACCESS_KEY_ID")
-                || !line.contains("AWS_SECRET_ACCESS_KEY")
-                || !line.contains("AWS_REGION")
+            if !line.contains("aws_access_key_id=")
+                || !line.contains("aws_secret_access_key=")
+                || !line.contains("region=")
             {
                 eprintln!("The credentials file is invalid!");
                 let mut writer = match create_cred_config::create_config_file() {
                     Ok(w) => w,
                     Err(err) => panic!("Problem creating config file ==> Err: {}", err),
                 };
-                let required = [
-                    "AWS_ACCESS_KEY_IDi = ",
-                    "AWS_SECRET_ACCESS_KEY = ",
-                    "AWS_REGION = ",
-                ];
+                let required = ["aws_access_key_id=", "aws_secret_access_key=", "region="];
                 for item in &required {
                     let _ = write_config::edit_config_from_stdin(item, &mut writer)
                         .expect("Error editing credentials file for item ");

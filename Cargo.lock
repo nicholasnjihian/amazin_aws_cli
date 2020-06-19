@@ -71,6 +71,7 @@ dependencies = [
  "colored",
  "csv",
  "rusoto_core",
+ "rusoto_credential",
  "rusoto_ec2",
  "rusoto_ecr",
  "rusoto_ecs",
@@ -78,6 +79,7 @@ dependencies = [
  "rusoto_rds",
  "rusoto_s3",
  "structopt",
+ "tokio",
 ]
 
 [[package]]

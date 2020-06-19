@@ -9,13 +9,12 @@ pub fn edit_config_from_csv(
 ) -> Result<(), Box<dyn Error>> {
     let acc_key_bytes = &config[0].clone().into_bytes();
     let secr_key_bytes = &config[1].clone().into_bytes();
-    buffer.get_mut().write(b"AWS_ACCESS_KEY_ID = ")?;
+    buffer.get_mut().write(b"aws_access_key_id=")?;
     buffer.get_mut().write(acc_key_bytes)?;
     buffer.get_mut().write(b"\n")?;
-    buffer.get_mut().write(b"AWS_SECRET_ACCESS_KEY = ")?;
+    buffer.get_mut().write(b"aws_secret_access_key=")?;
     buffer.get_mut().write(secr_key_bytes)?;
     buffer.get_mut().write(b"\n")?;
-    buffer.get_mut().write(b"AWS_REGION = ")?;
     Ok(())
 }
 

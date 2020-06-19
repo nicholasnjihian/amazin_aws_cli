@@ -5,7 +5,7 @@ use std::error::Error;
 use std::fmt::Write;
 use std::fs::{self, File, OpenOptions};
 use std::io::BufWriter;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 ///Here we will create the config file where credentials will be stored in disk
 ///to avoid prompting for the credentials or reading from csv.
@@ -35,4 +35,12 @@ pub fn create_config_file() -> Result<BufWriter<File>, Box<dyn Error>> {
         .open(fullpath)?;
 
     Ok(BufWriter::new(file))
+}
+
+pub fn return_config_location() -> Result<PathBuf, Box<dyn Error>> {
+    let home = env::var("HOME")?;
+    let dir_str = format!("{}/.aws_cli/credentials", home);
+    let file_path = Path::new(&dir_str);
+
+    Ok(file_path.to_path_buf())
 }

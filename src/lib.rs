@@ -6,6 +6,7 @@ use structopt::StructOpt;
 //and to maintain code easily
 pub mod create_cred_config;
 pub mod read_csv;
+pub mod rusoto_aws_integration;
 pub mod write_config;
 
 //Below are the structs and enums that will have StructOpt implementations
@@ -16,12 +17,12 @@ pub mod write_config;
 #[derive(StructOpt, Debug)]
 ///"The various AWS resources we want to query"
 pub enum Resource {
-    S3,
-    EC2,
-    IAM,
-    RDS,
+    S3,  //Amazin Simple Storage Service
+    EC2, //Elastic Compute Cloud
+    IAM, // Identity and Access Management
+    RDS, //Relational Database Service
     ECR,
-    ECS,
+    ECS, //Elastic Container Service
 }
 
 #[derive(StructOpt, Debug)]
