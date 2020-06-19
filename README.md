@@ -33,6 +33,7 @@ You can execute it by running:
 
 It will show the necessary help, arguments and subcommands available.
 Hence you can run with commands like:
+---
 $./startup.sh --help
 ---
 $./startup.sh configure
@@ -53,19 +54,20 @@ Optionally if you don't want to use the script above (if you're wary of internet
 $cargo build --release
 
 **(ii): To run:(ensure you are in the same directory as the src directory):**
-*$cargo run <options/subcommand/arguments>*
+---
+$cargo run <options/subcommand/arguments>
 ---
 $ cargo run configure -f <enter credentials file>
 ---
-$ cargo configure
+$ cargo run configure
 ---
-$ cargo ls s3
+$ cargo run ls s3
 ---
-$ cargo list s3
+$ cargo run list s3
 ---
-$ cargo ls ec2
+$ cargo run ls ec2
 ---
-$ cargo list ecs
+$ cargo run list ecs
 
 ### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory):
 
@@ -81,8 +83,9 @@ However, the bash script above installs this for you if you don't have it instal
 
 **Also the rusoto crate(crate is the name for Rust packages) requires that OpenSSL be installed for Linux. This can be done via :**
 
-$ sudo apt install openssl
-$ sudo pacman -S openssl
+$ sudo apt install openssl (for Debian/Ubuntu)
+$ sudo pacman -S openssl (for Arch Linux)
+For Centos and Red-Hat based distros,look up official documentation online since the process includes downloading a tar file and running make on it.
 
 **and so on depending on your distribution.**
 
