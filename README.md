@@ -20,15 +20,18 @@ To start working with this app:
 
 (i): Git clone the repo:
 
+```
 $git clone https://github.com/nicholasnjihian/amazin_aws_cli.git
+```
 
 (ii): Then cd into the cloned folder on your machine.
 
 Find a startup.sh which will help in quickly installing dependencies, building and running the application.This bash script will check whether you have cargo and rustup installed and install them for you if you do not. It will then display the versions of these 2 software packages and then build and run the crate/project/application.
 
 You can execute it by running:
----
+```
 ./startup.sh
+```
 
 It will show the necessary help, arguments and subcommands available.
 Hence you can run with commands like:
@@ -49,43 +52,44 @@ $/.startup.sh ls ec2
 Optionally if you don't want to use the script above (if you're wary of internet-sourced scripts) you can just build the crate manually as follows(which is also what the script does).
 
 **(i): To build the crate:(ensure you are in the same directory as the src directory):**
----
+```
 $cargo build --release
+```
 
-**(ii): To run:(ensure you are in the same directory as the src directory):**
----
+(ii): To run:(ensure you are in the same directory as the src directory):**
+```
 $cargo run <options/subcommand/arguments>
----
+
 $ cargo run configure -f <enter credentials file>
----
+
 $ cargo run configure
----
+
 $ cargo run ls s3
----
+
 $ cargo run list s3
----
+
 $ cargo run ls ec2
----
+
 $ cargo run list ecs
-
+```
 ### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory).This command displays the offline documentation for the crate and all its dependencies to be viewed on a web browser:
-
+```
 $ cargo docs --open
+```
 
----
 ***Note:*** **The project is built in Rust so you have to have Rust installed on the computer. This can be done through the command: **
-
+```
 *$curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh*
-
+```
 However, the bash script above installs this for you if you don't have it installed.
 
 
 **Also the rusoto crate(crate is the name for Rust packages) requires that OpenSSL be installed for Linux. This can be done via :**
----
+```
 $ sudo apt install openssl (for Debian/Ubuntu)
----
+
 $ sudo pacman -S openssl (for Arch Linux)
----
+```
 For Centos and Red-Hat based distros,look up official documentation online since the process includes downloading a tar file and running make on it.
 
 
