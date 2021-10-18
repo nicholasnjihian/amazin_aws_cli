@@ -84,7 +84,7 @@ $ cargo docs --open
 However, the bash script above installs this for you if you don't have it installed.
 
 
-**Also the rusoto crate(crate is the name for Rust packages) requires that OpenSSL be installed for Linux. This can be done via :**
+Also the rusoto crate(crate is the name for Rust packages) requires that OpenSSL be installed for Linux. This can be done via :
 ```
 $ sudo apt install openssl (for Debian/Ubuntu)
 
