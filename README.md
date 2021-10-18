@@ -32,19 +32,19 @@ You can execute it by running:
 
 It will show the necessary help, arguments and subcommands available.
 Hence you can run with commands like:
----
+```
 $./startup.sh --help
----
+
 $./startup.sh configure
----
+
 $./startup.sh configure -f <enter credentials file>
----
+
 $./startup.sh list s3
----
+
 $./startup.sh ls s3
----
+
 $/.startup.sh ls ec2
----
+```
 ## Optional.
 Optionally if you don't want to use the script above (if you're wary of internet-sourced scripts) you can just build the crate manually as follows(which is also what the script does).
 
