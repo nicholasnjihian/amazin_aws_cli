@@ -72,7 +72,7 @@ $ cargo run ls ec2
 
 $ cargo run list ecs
 ```
-### (iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory).This command displays the offline documentation for the crate and all its dependencies to be viewed on a web browser:
+(iii). You can generate the docs for this application by running(ensure you are in the same directory as the src directory).This command displays the offline documentation for the crate and all its dependencies to be viewed on a web browser:
 ```
 $ cargo docs --open
 ```
