@@ -51,12 +51,12 @@ $/.startup.sh ls ec2
 ## Optional.
 Optionally if you don't want to use the script above (if you're wary of internet-sourced scripts) you can just build the crate manually as follows(which is also what the script does).
 
-**(i): To build the crate:(ensure you are in the same directory as the src directory):**
+(i): To build the crate:(ensure you are in the same directory as the src directory):
 ```
 $cargo build --release
 ```
 
-(ii): To run:(ensure you are in the same directory as the src directory):**
+(ii): To run:(ensure you are in the same directory as the src directory):
 ```
 $cargo run <options/subcommand/arguments>
 
