@@ -77,7 +77,7 @@ $ cargo run list ecs
 $ cargo docs --open
 ```
 
-***Note:*** **The project is built in Rust so you have to have Rust installed on the computer. This can be done through the command: **
+***Note:*** The project is built in Rust so you have to have Rust installed on the computer. This can be done through the command: 
 ```
 *$curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh*
 ```
